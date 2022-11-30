@@ -1,0 +1,552 @@
+/* Universal Styling */
+:root {
+  --site-max-width: 960px;
+  --gray: #544E4E;
+  --red: #863234;
+  --beige: #F1EEE9;
+  --gold: #EBAE37;
+  --black: #000000;
+  --white: #ffffff;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 { 
+  font-family: "Playfair Display", serif; 
+  font-size: 50px; 
+  font-weight: bolder; 
+  line-height: 25px; 
+  color: var(--red);
+}
+
+h2, h3, h4, p, label {
+  font-family: "Montserrat", sans-serif; 
+}
+
+h1, h2, h3, label {
+  text-transform: uppercase;
+}
+
+h2 { 
+  font-size: 22px; 
+  font-weight: 400; 
+  line-height: 30px; 
+}
+
+h3 { 
+  font-size: 20px; 
+  font-weight: 700; 
+  line-height: 25px; 
+}
+
+h4 { 
+  font-size: 18px; 
+  font-weight: 700; 
+  line-height: 25px; 
+}
+
+p { 
+  font-size: 16px; 
+  font-weight: 300;
+  line-height: 22px;
+  margin: auto;
+}
+
+
+/* Header & Navigation Styling */
+
+header {
+  width: 100%;
+  background-color: var(--gray);
+  position: sticky;
+  display: flex;
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hop-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0%;
+}
+
+nav.menu {
+  display: flex;
+}
+
+header ul {
+  margin: 0;
+  padding: 30px 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+header ul li {
+  font-weight: 500;
+  font-size: 18px;
+} 
+
+.social-sidebar {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.instagram-logo {
+  padding: 10%;
+}
+
+.facebook-logo {
+  padding: 10%;
+  margin: 0 20% 0 0;
+}
+
+
+/* Banner Styling */
+.banner-home, .banner-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 650px;
+  background-position: center;
+  background-image: url('images/home-beer-blank.jpg');
+  background-size: cover;
+  background-position-y: 95%;
+  background-color: var(--gray);
+}
+
+.banner-favorites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-position: center;
+  background-image: url('images/favorites-beer.jpg');
+  background-size: cover;
+  background-position-y: 95%;
+}
+
+.banner-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-position: center;
+  background-image: url('images/search-beer.jpg');
+  background-size: cover;
+  background-position-y: 95%;
+}
+
+.banner-recipes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-position: center;
+  background-image: url('images/recipes-page.jpg');
+  background-size: cover;
+  background-position-y: 95%;
+}
+
+.banner-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  background-position: center;
+  background-image: url('images/home-beer-blank.jpg');
+  background-size: cover;
+  background-position-y: 95%;
+}
+
+
+/* Home Styling */
+.home {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 5% 5% 5% 5%; 
+}
+
+.home-top {
+  margin: 5% 0 0 5%;
+  width: 60%;
+  align-items: center;  
+}
+
+.home-aside {
+  width: 30%; 
+  float: right;
+}
+
+.home-bottom {
+  margin: 5% 0 0 5%;
+} 
+
+
+/* Search Styling */
+.search-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+::placeholder {
+  text-align: center;
+}
+
+.search-logo {
+  max-height: 80%;
+}
+
+
+/* Beer Styling */
+.beer {
+  margin: 5%;
+}
+
+
+/* Login Styling */
+#login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+/* Input Styling */
+#input, #username, #password, #birthday {
+  padding: 10px 24px;
+  font-size: 1rem;
+  margin: auto auto 10px auto;
+  border-color: var(--red);
+  color: var(--black);
+  background-color: var(--beige);
+  text-align: center;
+  font-family: "Monsterrat", sans-serif; 
+}
+
+
+/* Button Styling */
+.button {
+  padding: 10px 24px;
+  background-color: var(--gray);
+  border-radius: 4px;
+  color: var(--beige);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 200ms;
+  font-family: "Monsterrat", sans-serif; 
+  margin: 3%;
+}
+
+.login-button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  padding: 10px 50px;
+  background-color: var(--red);
+  border-style: solid;
+  border-color: var(--gold);
+  border-width: 3px;
+  color: var(--beige);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 200ms;
+  font-family: "Monsterrat", sans-serif; 
+  margin: 3%;
+}
+
+.login-button:hover{
+  border-radius: 0px;
+  height: 18px;
+  width: 50px;
+  background: var(--red);
+  transition: all 0.5s ease;
+  color: var(--beige);
+}
+
+a {
+  font-family: "Monsterrat", sans-serif; 
+  text-decoration: none;
+  color: var(--gold);
+}
+
+
+/* Footer Styling */
+footer {
+  background-color: var(--gray);
+  padding: 10px 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--gold);
+  position: fixed;
+  bottom: 0;
+  width: 100%;  
+}
+
+/* Hamburger Menu/Toggle Button Styling */
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-color: var(--gray);
+  font-size: 20px;
+}
+
+.navbar_toggle {
+  margin-left: 5%;
+  font-size: 30px;
+  color: var(--white);
+  background: transparent;
+  border-color: transparent;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  display: none;
+}
+
+.logo{
+  margin-left: 5%;
+  color: var(--white);
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.logo_header{
+  display: flex;
+  margin-left: 2%;
+}
+
+.main_nav{
+  display: flex;
+  width: 50%;
+  float: center;
+  margin-right: 25%;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.main_nav ul, .nav_links:hover{
+  color: var(--beige);
+}
+
+.main_nav li{
+  display: inline;
+  color: #EBAE37;
+}
+
+.main_nav li a{
+  color: #EBAE37;
+}
+
+
+/* Tablet Styling */
+@media screen and (max-width: 1200px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100vw;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: var(--gray);
+    font-size: 20px;
+  }
+
+  .main_nav, .social-sidebar, .facebook-logo, .instagram-logo {
+    display: none;
+  }
+
+  .show_nav{
+    padding-top: 2%;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .main_nav li{
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    justify-content: center;
+    text-align: center;
+    padding: 0%;
+  }
+  
+  .navbar_toggle {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 30px;
+    color: var(--white);
+    background: transparent;
+    border-color: transparent;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    display: block;
+  }
+  
+  .logo_header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin: 0;
+  }
+  
+  .banner-home img, .banner-favorites img, .banner-search img, .banner-recipes img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 40px
+  }
+
+  h2 {
+    font-size: 20px
+  }
+  
+  p {
+    font-size: 14px;
+    margin: auto;
+  }
+  footer {
+    position: unset;
+    /* bottom: 0;
+    width: 100%;   */
+  }
+}
+
+
+/* Mobile Styling */
+@media screen and (max-width: 400px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    max-width: 100%;
+    align-items: center;
+  }
+
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100vw;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    background-color: var(--gray);
+    font-size: 20px;
+  }
+
+  .main_nav, .social-sidebar, .facebook-logo, .instagram-logo {
+    display: none;
+  }
+
+  .show_nav {
+    padding-top: 2%;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .main_nav li{
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    justify-content: center;
+    text-align: center;
+    padding: 0%;
+  }
+  
+  .navbar_toggle {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 30px;
+    color: var(--white);
+    background: transparent;
+    border-color: transparent;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    display: block;
+  }
+  
+  .logo_header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 30px
+  }
+
+  h2 {
+    font-size: 18px
+  }
+  
+  p {
+    font-size: 12px;
+    margin: auto;
+  }
+
+  
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
