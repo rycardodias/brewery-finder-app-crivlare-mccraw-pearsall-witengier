@@ -1,26 +1,87 @@
 {{> header }}
 
-  <main>
-    <div class="banner-search">
-        <img src="images/hop-logo-main.png" alt="The Crafty Hop Hunter Full Logo" width="800" height="250">
+<main>
+  <div class="banner-search">
+    <img src="images/hop-logo-main.png" alt="The Crafty Hop Hunter Full Logo" width="800" height="250">
+  </div>
+
+  <section class="search-section">
+    <br>
+    <br>
+    <h2>Find the nearest brewery with just one tap.</h2>
+    <img src="images/hop-logo-red.png" class="search-logo" alt="The Crafty Hop Hunter Search Logo" width="300"
+      height="225">
+    <div id="beer-app">
+      <section id="beer">
+
+        <input type="text" name="postalNumber" id="postalNumber" placeholder="ENTER ZIP CODE" />
+        <button class="button" type="button" onclick="getData()">SEARCH</button>
+
+        <div id="breweryContainer" name="breweryContainer"></div>
+
+      </section>
+
     </div>
-    
-    <section class="search-section">
-      <br>
-      <br>
-        <h2>Find the nearest brewery with just one tap.</h2>
-          <img src="images/hop-logo-red.png" class="search-logo" alt="The Crafty Hop Hunter Search Logo" width="300" height="225"> 
-      <div id="beer-app">
-          <section id="beer"></section>
-          <form id="brewery-form">
+    <br>
+  </section>
+</main>
 
-            <input name="search" id="input" type="text" placeholder="ENTER ZIP CODE" />
+<script>
+  async function setFavorite(breweryId) {
+    let favoritesApiResult = await fetch('/api/favorites/insert', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ breweryId })
+    })
 
-            <button class="button" type="submit">SEARCH</button>
-          </form>
-        </div>
-      <br>
-    </section>
-  </main>
+    const favoritesData = await favoritesApiResult.json()
+
+  }
+
+  async function getData() {
+    const inputValue = document.getElementById("postalNumber").value
+
+    let breweryApiResult = await fetch('/api/brewery/byPostal?' + new URLSearchParams({
+      postalNumber: inputValue,
+    }).toString())
+
+    let breweryData = await breweryApiResult.json()
+
+    if (!breweryData.data[0]) {
+
+      document.getElementById("breweryContainer").innerHTML = "<p>No data available</p><br><br>"
+    }
+    else {
+      const listHTML = getRenderedList(breweryData.data)
+
+      document.getElementById("breweryContainer").innerHTML = listHTML;
+    }
+  }
+
+
+  function getRenderedList(list) {
+    let htmlObject = "<ul class=\"brewery_list\">";
+
+    list.map((item) => {
+      htmlObject += `<li class=\"${item.id}\">`
+      htmlObject += `<button type=\"button\" onclick=\"setFavorite(\'${item.id.toString()}\')\">Favorite</button>`
+      htmlObject += `<p>${item.name}</p>`
+      htmlObject += `<p>${item.street}</p>`
+
+      htmlObject += `</li><br>`
+
+    })
+
+    htmlObject += "</ul>";
+
+    return htmlObject;
+  }
+
+
+
+</script>
 
 {{> footer}}

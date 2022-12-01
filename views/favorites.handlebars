@@ -1,10 +1,70 @@
 {{> header }}
 
 <main>
-    <div class="banner-favorites">
-      <img src="images/hop-logo-main.png" alt="The Crafty Hop Hunter Full Logo" class="full-logo" width="800" height="250">
-    </div>
-    <section id="randomBeer" class="about"></section>
-  </main>
+  <div class="banner-favorites">
+    <img src="images/hop-logo-main.png" alt="The Crafty Hop Hunter Full Logo" class="full-logo" width="800"
+      height="250">
+  </div>
+  <section id="randomBeer" class="about">
+
+  </section>
+
+  <div id="favoritesContainer" name="favoritesContainer"></div>
+</main>
+
+
+<script>
+  async function removeFavorite(breweryId) {
+    let favoritesApiResult = await fetch('/api/favorites/delete', {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ breweryId })
+    })
+
+    const favoritesData = await favoritesApiResult.json()
+
+    getData()
+  }
+
+  async function getData() {
+    let favoritesApiResult = await fetch('/api/favorites/byUser')
+
+    let favoritesData = await favoritesApiResult.json()
+
+    if (!favoritesData.data[0]) {
+
+      document.getElementById("favoritesContainer").innerHTML = "<p>No data available</p><br><br>"
+    }
+    else {
+      const listHTML = getRenderedList(favoritesData.data)
+
+      document.getElementById("favoritesContainer").innerHTML = listHTML;
+    }
+  }
+
+
+  function getRenderedList(list) {
+    let htmlObject = "<ul class=\"brewery_list\">";
+
+    list.map((item) => {
+      htmlObject += `<li class=\"${item.id}\">`
+      htmlObject += `<button type=\"button\" onclick=\"removeFavorite(\'${item.id.toString()}\')\">Remove Favorite</button>`
+      htmlObject += `<p>${item.name}</p>`
+      htmlObject += `<p>${item.street}</p>`
+      htmlObject += `</li><br>`
+
+    })
+
+    htmlObject += "</ul>";
+
+    return htmlObject;
+  }
+
+  getData()
+
+</script>
 
 {{> footer}}

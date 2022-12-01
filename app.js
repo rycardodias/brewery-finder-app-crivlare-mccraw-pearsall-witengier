@@ -4,12 +4,15 @@ const exphbs = require('express-handlebars')
 const session = require('express-session')
 const MySQLFavorites = require('express-mysql-session')(session);
 const db = require('./db')
-const apiRoutes = require('./routes/api-routes')
 const htmlRoutes = require('./routes/html-routes')
 const app = express()
 
+const favoritesRoutes = require('./routes/favorites')
+const usersRoutes = require('./routes/users')
+const breweryRoutes = require('./routes/brewery')
+
 app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
 
 const sessionFavorites = new MySQLFavorites({}, db);
 app.use(session({
@@ -20,17 +23,21 @@ app.use(session({
     saveUninitialized: false,
     proxy: true,
     cookie: {
-        maxAge: 1000 *60 * 60 * 24
+        maxAge: 1000 * 60 * 60 * 24
     }
 }))
 
 app.engine('handlebars', exphbs.engine())
-app.set('view engine','handlebars')
+app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 
+app.use('/api/favorites', favoritesRoutes)
+app.use('/api/users', usersRoutes)
+app.use('/api/brewery', breweryRoutes)
+
 app.use('/', htmlRoutes)
-app.use('/api', apiRoutes)
+
 
 module.exports = app
 

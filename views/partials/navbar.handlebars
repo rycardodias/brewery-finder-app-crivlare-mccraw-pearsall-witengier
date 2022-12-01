@@ -1,30 +1,35 @@
 <nav class="navbar">
-    <div class="logo_header">
-      <a href="#" class="logo"></a>
-      <button class="navbar_toggle">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-    
-   <ul class="main_nav">
-      <li>
-        <a href="/" class="nav_links">HOME</a>
-      </li>
-      <li>
-        <a href="/search" class="nav_links">SEARCH</a>
-      </li>
-      <li>
-        <a href="/recipes" class="nav_links">RECIPES</a>
-      </li>
-      <li>
-        <a href="/favorites" class="nav_links">FAVORITES</a>
-      </li>
-      <li>
-        <a href="/login" class="nav_links">LOGIN</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="logo_header">
+    <a href="#" class="logo"></a>
+    <button class="navbar_toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
 
-  <script src="hamburger.js"></script>
+  <ul class="main_nav">
+    <li>
+      <a href="/" class="nav_links">HOME</a>
+    </li>
+    <li>
+      <a href="/search" class="nav_links">SEARCH</a>
+    </li>
+    <li>
+      <a href="/recipes" class="nav_links">RECIPES</a>
+    </li>
+    <li>
+      <a href="/favorites" class="nav_links">FAVORITES</a>
+    </li>
+    <li>
+      <a href="/login" class="nav_links">LOGIN</a>
+    </li>
+  </ul>
+</nav>
 
-  
+<script>
+  const nav = document.querySelector(".main_nav")
+  const hamburgerButton = document.querySelector(".navbar_toggle")
+
+  hamburgerButton.addEventListener("click", function () {
+    nav.classList.toggle("show_nav")
+  })
+</script>
