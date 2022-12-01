@@ -6,7 +6,7 @@
     </button>
   </div>
 
-  <ul class="main_nav">
+  <ul class="main_nav" name="main_nav" id="main_nav">
     <li>
       <a href="/" class="nav_links">HOME</a>
     </li>
@@ -32,4 +32,32 @@
   hamburgerButton.addEventListener("click", function () {
     nav.classList.toggle("show_nav")
   })
+
+  async function logoutUser() {
+    let usersApiResult = await fetch('/api/users/logout')
+  }
+
+  async function verifyUserLoggedIn() {
+    let usersApiResult = await fetch('/api/users/isLoggedIn')
+
+    let usersData = await usersApiResult.json()
+
+    let navButtonsHTML = ""
+
+    navButtonsHTML += "<li><a href=\"/\" class=\"nav_links\">HOME</a></li>"
+    navButtonsHTML += "<li><a href=\"/search\" class=\"nav_links\">SEARCH</a></li>"
+    navButtonsHTML += "<li><a href=\"/recipes\" class=\"nav_links\">RECIPES</a></li>"
+
+    if (usersData.error) {
+      navButtonsHTML += "<li><a href=\"/login\" class=\"nav_links\">LOGIN</a></li>"
+    } else {
+      navButtonsHTML += "<li><a href=\"/favorites\" class=\"nav_links\">FAVORITES</a></li>"
+      navButtonsHTML += "<li><a href=\"/\" class=\"nav_links\" onclick=\'logoutUser()\'>LOGOUT</a></li>"
+    }
+    document.getElementById("main_nav").innerHTML = navButtonsHTML
+
+  }
+
+  verifyUserLoggedIn()
+
 </script>

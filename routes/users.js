@@ -69,13 +69,27 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     try {
         if (req.session) {
             req.session.destroy();
             return res.status(200).json({ data: "User loggedOut!" })
         }
         return res.status(400).json({ data: "Error onOut!" })
+
+    } catch (error) {
+        res.status(400).json({ error })
+    }
+
+})
+
+router.get('/isLoggedIn', (req, res) => {
+    try {
+        if (req.session.loggedIn) {
+            return res.status(200).json({ data: "Is loggedIn!" })
+        }
+
+        return res.status(400).json({ error: "User not Found!" })
 
     } catch (error) {
         res.status(400).json({ error })
