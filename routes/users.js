@@ -62,11 +62,24 @@ router.post('/login', async (req, res) => {
         req.session.loggedIn = true
         req.session.userId = rows[0].id
 
-        res.status(200).json({ data: rows })
+        res.redirect('/search')
+        // res.status(200).json({ data: rows })
     } catch (error) {
-        console.log(error)
         res.status(400).json({ error })
     }
 })
 
+router.post('/logout', (req, res) => {
+    try {
+        if (req.session) {
+            req.session.destroy();
+            return res.status(200).json({ data: "User loggedOut!" })
+        }
+        return res.status(400).json({ data: "Error onOut!" })
+
+    } catch (error) {
+        res.status(400).json({ error })
+    }
+
+})
 module.exports = router
